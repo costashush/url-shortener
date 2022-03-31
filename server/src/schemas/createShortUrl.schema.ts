@@ -1,9 +1,14 @@
-import { object, string } from "yup";
+import { boolean, object, string } from "yup";
 
 export default object({
   body: object({
+    isShortUrl: boolean(),
     destination: string()
+      .required("Destination is required")
       .url("Must be a valid URL")
-      .required("Destination is required"),
+      .when("isShortUrl", {
+        is: true,
+        then: string().required("Must enter email address"),
+      }),
   }),
 });

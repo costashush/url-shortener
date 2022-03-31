@@ -13,7 +13,10 @@ function routes(app: Express) {
     return res.send("App is healthy");
   });
 
-  app.post("/api/url", validateResourse(shortUrlSchema), createShortUrl);
+  app.post("/api/url", validateResourse(shortUrlSchema), function (req, res) {
+    req.body.isShortUrl = false;
+    createShortUrl(req, res);
+  });
 
   app.get("/:shortId", handleRedirect);
 

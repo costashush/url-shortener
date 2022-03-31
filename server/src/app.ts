@@ -19,8 +19,6 @@ const port = config.get("port") as number;
 // app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
-//asdfsdf
-
 app.use(express.json());
 
 app.listen(port, "0.0.0.0", () => {
