@@ -1,6 +1,5 @@
 import express from "express";
 import config from "config";
-import bodyParser from "body-parser";
 import cors from "cors";
 import routes from "./routes";
 import db from "./db";
@@ -15,8 +14,6 @@ app.use(
 
 const port = config.get("port") as number;
 
-// parse application/json
-// app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
